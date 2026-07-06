@@ -1,0 +1,118 @@
+/* Apple in Medicine Style */
+:root {
+    --bg-main: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-primary: #1d1d1f;
+    --text-secondary: #86868b;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.1);
+    
+    /* Medical Accents */
+    --accent-blue: #0A84FF;
+    --accent-indigo: #5E5CE6;
+    --accent-red: #FF453A;
+    --accent-orange: #FF9F0A;
+    --accent-green: #30D158;
+    --accent-purple: #BF5AF2;
+}
+
+body {
+    margin: 0;
+    padding: 20px 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: transparent; /* Allows Moodle background to show through if iframe is transparent */
+}
+
+/* Scrollbar hiding for horizontal scroll */
+::-webkit-scrollbar {
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #d1d1d6;
+    border-radius: 10px;
+}
+
+.course-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-card {
+    flex: 0 0 auto;
+    width: 220px;
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 16px;
+    text-decoration: none;
+    box-shadow: var(--shadow-light);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.nav-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.nav-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.nav-card:hover .nav-icon {
+    transform: scale(1.1);
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-content h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.nav-content p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.3;
+}
+
+/* Colors */
+.bg-blue { background-color: var(--accent-blue); }
+.bg-indigo { background-color: var(--accent-indigo); }
+.bg-red { background-color: var(--accent-red); }
+.bg-orange { background-color: var(--accent-orange); }
+.bg-green { background-color: var(--accent-green); }
+.bg-purple { background-color: var(--accent-purple); }
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    .nav-card {
+        width: 180px; /* Slightly smaller on mobile to show that you can scroll */
+    }
+}
