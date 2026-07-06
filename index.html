@@ -3,80 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Навигация курса</title>
+    <title>Премиальная Навигация курса</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Phosphor Icons -->
+    <!-- Phosphor Icons (Light weight for elegance) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-    <nav class="course-nav">
-        <!-- Клин. Рекомендации -->
-        <a href="https://e.kazangmu.ru/course/view.php?id=3585&section=1" target="_top" class="nav-card">
-            <div class="nav-icon bg-blue">
-                <i class="ph ph-books"></i>
-            </div>
-            <div class="nav-content">
-                <h3>Библиотека клинических рекомендаций</h3>
-                <p>РФ и международные стандарты</p>
-            </div>
-        </a>
-
-        <!-- Лекторий -->
-        <a href="https://e.kazangmu.ru/course/view.php?id=3585&section=2" target="_top" class="nav-card">
-            <div class="nav-icon bg-indigo">
-                <i class="ph ph-presentation-chart"></i>
-            </div>
-            <div class="nav-content">
-                <h3>Лекторий</h3>
-                <p>Теоретические материалы</p>
-            </div>
-        </a>
-
-        <!-- Операционная -->
-        <a href="https://e.kazangmu.ru/course/view.php?id=3585&section=3" target="_top" class="nav-card">
-            <div class="nav-icon bg-red">
-                <i class="ph ph-first-aid"></i>
-            </div>
-            <div class="nav-content">
-                <h3>Операционная</h3>
-                <p>Интерактивные видеокейсы</p>
-            </div>
-        </a>
-
-        <!-- Клинические разборы -->
-        <a href="https://e.kazangmu.ru/course/view.php?id=3585&section=4" target="_top" class="nav-card">
-            <div class="nav-content-icon">
-                <div class="nav-icon bg-orange">
-                    <i class="ph ph-users-three"></i>
+    <div class="nav-container">
+        <nav class="course-nav">
+            <!-- 1. Библиотека клинических рекомендаций -->
+            <a href="https://e.kazangmu.ru/course/view.php?id=3585&section=1" target="_top" class="widget-card">
+                <div class="widget-icon-wrapper blue">
+                    <i class="ph-light ph-books"></i>
                 </div>
-            </div>
-            <div class="nav-content">
-                <h3>Клинические разборы</h3>
-                <p>Нейронауки и журнальный клуб</p>
-            </div>
-        </a>
+                <div class="widget-text">
+                    <h3>Библиотека клинических рекомендаций</h3>
+                    <p>РФ и международные стандарты</p>
+                </div>
+            </a>
 
-        <!-- Центр оценки знаний -->
-        <a href="https://e.kazangmu.ru/course/view.php?id=3585&section=5" target="_top" class="nav-card">
-            <div class="nav-icon bg-green">
-                <i class="ph ph-exam"></i>
-            </div>
-            <div class="nav-content">
-                <h3>Центр оценки знаний</h3>
-                <p>Тесты и симуляции</p>
-            </div>
-        </a>
+            <!-- 2. Лекторий -->
+            <a href="https://e.kazangmu.ru/course/view.php?id=3585&section=2" target="_top" class="widget-card">
+                <div class="widget-icon-wrapper purple">
+                    <i class="ph-light ph-presentation-chart"></i>
+                </div>
+                <div class="widget-text">
+                    <h3>Лекторий</h3>
+                    <p>Теоретические материалы курса</p>
+                </div>
+            </a>
 
-        <!-- Наука -->
-        <a href="https://e.kazangmu.ru/course/view.php?id=3585&section=6" target="_top" class="nav-card">
-            <div class="nav-icon bg-purple">
-                <i class="ph ph-microscope"></i>
-            </div>
-            <div class="nav-content">
-                <h3>Научная работа</h3>
-                <p>Основы исследований</p>
-            </div>
-        </a>
-    </nav>
+            <!-- 3. Операционная -->
+            <a href="https://e.kazangmu.ru/course/view.php?id=3585&section=3" target="_top" class="widget-card">
+                <div class="widget-icon-wrapper red">
+                    <i class="ph-light ph-heartbeat"></i>
+                </div>
+                <div class="widget-text">
+                    <h3>Операционная</h3>
+                    <p>Интерактивные видеокейсы</p>
+                </div>
+            </a>
+
+            <!-- 4. Клинические разборы -->
+            <a href="https://e.kazangmu.ru/course/view.php?id=3585&section=4" target="_top" class="widget-card">
+                <div class="widget-icon-wrapper orange">
+                    <i class="ph-light ph-users-three"></i>
+                </div>
+                <div class="widget-text">
+                    <h3>Клинические разборы</h3>
+                    <p>Нейронауки и журнальный клуб</p>
+                </div>
+            </a>
+
+            <!-- 5. Центр оценки знаний -->
+            <a href="https://e.kazangmu.ru/course/view.php?id=3585&section=5" target="_top" class="widget-card">
+                <div class="widget-icon-wrapper green">
+                    <i class="ph-light ph-exam"></i>
+                </div>
+                <div class="widget-text">
+                    <h3>Центр оценки знаний</h3>
+                    <p>Тесты и симуляции</p>
+                </div>
+            </a>
+
+            <!-- 6. Наука -->
+            <a href="https://e.kazangmu.ru/course/view.php?id=3585&section=6" target="_top" class="widget-card">
+                <div class="widget-icon-wrapper indigo">
+                    <i class="ph-light ph-microscope"></i>
+                </div>
+                <div class="widget-text">
+                    <h3>Научная работа</h3>
+                    <p>Основы исследований</p>
+                </div>
+            </a>
+        </nav>
+    </div>
 </body>
 </html>

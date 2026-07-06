@@ -1,118 +1,168 @@
-/* Apple in Medicine Style */
+/* Premium Apple-like Interface */
 :root {
-    --bg-main: #f8f9fa;
-    --card-bg: #ffffff;
-    --text-primary: #1d1d1f;
-    --text-secondary: #86868b;
-    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
-    --shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.1);
+    --text-primary: #1D1D1F;
+    --text-secondary: #86868B;
+    --card-bg: #FFFFFF;
+    --card-border: rgba(0, 0, 0, 0.04);
     
-    /* Medical Accents */
-    --accent-blue: #0A84FF;
-    --accent-indigo: #5E5CE6;
-    --accent-red: #FF453A;
-    --accent-orange: #FF9F0A;
-    --accent-green: #30D158;
-    --accent-purple: #BF5AF2;
+    /* Apple-style smooth shadow */
+    --shadow-base: 0 4px 14px rgba(0, 0, 0, 0.03), 0 1px 4px rgba(0, 0, 0, 0.02);
+    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.08), 0 1px 8px rgba(0, 0, 0, 0.04);
+    
+    /* Animation Curve */
+    --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body {
     margin: 0;
-    padding: 20px 10px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: transparent; /* Allows Moodle background to show through if iframe is transparent */
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: transparent; /* Seamless with Moodle */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scrollbar hiding for horizontal scroll */
+/* Hide scrollbar completely but allow scrolling */
 ::-webkit-scrollbar {
-    height: 6px;
+    display: none;
 }
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-::-webkit-scrollbar-thumb {
-    background: #d1d1d6;
-    border-radius: 10px;
+
+.nav-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 24px 12px; /* Padding allows shadows to not be clipped */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 }
 
 .course-nav {
     display: flex;
     flex-wrap: nowrap;
-    gap: 12px;
-    overflow-x: auto;
-    padding-bottom: 12px;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    width: max-content;
+    /* Optional: scroll snapping for mobile */
+    scroll-snap-type: x mandatory;
 }
 
-.nav-card {
+/* Widget Card */
+.widget-card {
     flex: 0 0 auto;
-    width: 220px;
+    width: 200px;
+    height: 140px;
     background-color: var(--card-bg);
-    border-radius: 16px;
-    padding: 16px;
+    border-radius: 24px;
+    padding: 20px;
     text-decoration: none;
-    box-shadow: var(--shadow-light);
+    box-shadow: var(--shadow-base);
+    border: 1px solid var(--card-border);
+    
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    border: 1px solid rgba(0,0,0,0.03);
+    justify-content: space-between;
+    
+    transition: transform 0.5s var(--ease-apple), box-shadow 0.5s var(--ease-apple);
+    scroll-snap-align: start;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
-.nav-card:hover {
-    transform: translateY(-4px);
+.widget-card:hover {
+    transform: translateY(-6px) scale(1.02);
     box-shadow: var(--shadow-hover);
 }
 
-.nav-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
+/* Icon Wrapper */
+.widget-icon-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 20px;
-    transition: transform 0.3s ease;
+    font-size: 24px;
+    transition: transform 0.4s var(--ease-apple);
 }
 
-.nav-card:hover .nav-icon {
-    transform: scale(1.1);
+.widget-card:hover .widget-icon-wrapper {
+    transform: scale(1.1) rotate(-3deg);
 }
 
-.nav-content {
+/* Text */
+.widget-text {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
-.nav-content h3 {
+.widget-text h3 {
     margin: 0;
     font-size: 15px;
     font-weight: 600;
     color: var(--text-primary);
-    line-height: 1.2;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
 }
 
-.nav-content p {
+.widget-text p {
     margin: 0;
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: 400;
     color: var(--text-secondary);
     line-height: 1.3;
+    letter-spacing: -0.01em;
 }
 
-/* Colors */
-.bg-blue { background-color: var(--accent-blue); }
-.bg-indigo { background-color: var(--accent-indigo); }
-.bg-red { background-color: var(--accent-red); }
-.bg-orange { background-color: var(--accent-orange); }
-.bg-green { background-color: var(--accent-green); }
-.bg-purple { background-color: var(--accent-purple); }
+/* Accent Colors for Icons (Soft Background + Vivid Icon) */
+.widget-icon-wrapper.blue {
+    background-color: #EBF4FF;
+    color: #007AFF;
+}
+.widget-icon-wrapper.purple {
+    background-color: #F4E8FB;
+    color: #AF52DE;
+}
+.widget-icon-wrapper.red {
+    background-color: #FFEBEE;
+    color: #FF3B30;
+}
+.widget-icon-wrapper.orange {
+    background-color: #FFF4E5;
+    color: #FF9500;
+}
+.widget-icon-wrapper.green {
+    background-color: #E8F5E9;
+    color: #34C759;
+}
+.widget-icon-wrapper.indigo {
+    background-color: #ECECFF;
+    color: #5856D6;
+}
 
-/* Responsive tweaks */
+/* Responsive constraints */
 @media (max-width: 600px) {
-    .nav-card {
-        width: 180px; /* Slightly smaller on mobile to show that you can scroll */
+    .widget-card {
+        width: 160px;
+        height: 130px;
+        padding: 16px;
+        border-radius: 20px;
+    }
+    
+    .widget-icon-wrapper {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+        border-radius: 12px;
+    }
+    
+    .widget-text h3 {
+        font-size: 14px;
+    }
+    
+    .widget-text p {
+        font-size: 11px;
     }
 }
