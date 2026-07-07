@@ -10,7 +10,7 @@
 
 :root {
     --color-surface: #ffffff;
-    --color-bg-body: transparent;
+    --color-bg-body: #ffffff; /* Forced white background to remove Moodle's gray iframe background */
     --color-bg-hover: #eef2ff; /* Unified light lavender/blue tint */
     --color-text-main: #0f172a;
     --color-text-sub: #64748b;
@@ -40,10 +40,11 @@ body {
     box-sizing: border-box;
 }
 
-/* Responsive Grid: Will automatically create 2 or 3 rows depending on screen width */
+/* Responsive Grid: Will automatically create rows depending on screen width.
+   min(100%, 320px) ensures it shrinks on very small mobile screens instead of overflowing. */
 .course-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 16px;
     width: 100%;
 }
@@ -174,4 +175,31 @@ body {
 .course-card:hover .card-arrow {
     color: var(--color-text-main);
     transform: translateX(4px);
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 8px; /* Less padding on small screens */
+    }
+    .course-card {
+        padding: 16px; /* Tighter padding for mobile */
+        gap: 12px;
+    }
+    .card-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .card-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    .card-title {
+        font-size: 13px;
+    }
+    .card-subtitle {
+        font-size: 11px;
+    }
 }
