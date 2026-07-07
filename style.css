@@ -40,13 +40,26 @@ body {
     box-sizing: border-box;
 }
 
-/* Responsive Grid: Will automatically create rows depending on screen width.
-   min(100%, 320px) ensures it shrinks on very small mobile screens instead of overflowing. */
+/* Strict Grid: Exactly 3 columns on desktop (2 rows of 3).
+   grid-auto-rows: 1fr ensures ALL rows (and therefore all cards) have the exact same height, based on the tallest card. */
 .course-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
     gap: 16px;
     width: 100%;
+}
+
+@media (max-width: 900px) {
+    .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Clinical Card */
@@ -60,6 +73,8 @@ body {
     gap: 16px;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
+    height: 100%;
+    box-sizing: border-box;
     
     /* NO SHADOWS - strict requirement */
     box-shadow: none !important;
