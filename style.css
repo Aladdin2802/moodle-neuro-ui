@@ -193,14 +193,59 @@ body {
 }
 
 /* ==========================================================================
-   MOBILE RESPONSIVENESS
+   MOBILE RESPONSIVENESS (SLIDER)
    ========================================================================== */
-@media (max-width: 480px) {
+.slider-indicators {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--accent-blue);
+    width: 24px;
+    border-radius: 4px;
+}
+
+@media (max-width: 900px) {
     .nav-container {
-        padding: 8px; /* Less padding on small screens */
+        padding: 16px;
+    }
+    .course-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        padding-bottom: 4px; 
+    }
+    .course-grid::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
     }
     .course-card {
-        padding: 16px; /* Tighter padding for mobile */
+        flex: 0 0 calc(50% - 8px);
+        scroll-snap-align: start;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-container {
+        padding: 12px;
+    }
+    .course-card {
+        flex: 0 0 calc(85%); /* Show 1 full card and peek the next */
+        padding: 16px;
         gap: 12px;
     }
     .card-icon {

@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="nav-container">
-        <nav class="course-grid">
+        <nav class="course-grid" id="courseGrid">
             <!-- 1. Библиотека -->
             <a href="https://e.kazangmu.ru/mod/data/view.php?id=270458" target="_top" class="course-card">
                 <div class="card-icon blue">
@@ -119,6 +119,60 @@
                 </div>
             </a>
         </nav>
+        
+        <!-- Slider Indicators for Mobile -->
+        <div class="slider-indicators" id="sliderIndicators"></div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('courseGrid');
+            const indicatorsContainer = document.getElementById('sliderIndicators');
+            
+            function updateIndicators() {
+                // Check if scrolling is possible
+                if (grid.scrollWidth <= grid.clientWidth) {
+                    indicatorsContainer.style.display = 'none';
+                    return;
+                }
+                
+                indicatorsContainer.style.display = 'flex';
+                const cards = grid.querySelectorAll('.course-card');
+                const gap = parseInt(window.getComputedStyle(grid).gap) || 16;
+                const cardWidth = cards[0].offsetWidth + gap;
+                
+                // Max scroll distance
+                const maxScroll = grid.scrollWidth - grid.clientWidth;
+                const maxIndex = Math.ceil(maxScroll / cardWidth);
+                
+                // Create dots if needed
+                if (indicatorsContainer.children.length !== (maxIndex + 1)) {
+                    indicatorsContainer.innerHTML = '';
+                    for (let i = 0; i <= maxIndex; i++) {
+                        const dot = document.createElement('div');
+                        dot.className = 'dot';
+                        dot.addEventListener('click', () => {
+                            grid.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+                        });
+                        indicatorsContainer.appendChild(dot);
+                    }
+                }
+                
+                // Update active dot
+                let activeIndex = Math.round(grid.scrollLeft / cardWidth);
+                if (activeIndex > maxIndex) activeIndex = maxIndex;
+                
+                Array.from(indicatorsContainer.children).forEach((dot, index) => {
+                    dot.classList.toggle('active', index === activeIndex);
+                });
+            }
+
+            grid.addEventListener('scroll', updateIndicators, { passive: true });
+            window.addEventListener('resize', updateIndicators);
+            
+            // Initial call
+            setTimeout(updateIndicators, 100);
+        });
+    </script>
 </body>
 </html>
