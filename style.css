@@ -40,26 +40,15 @@ body {
     box-sizing: border-box;
 }
 
-/* Strict Grid: Exactly 3 columns on desktop (2 rows of 3).
-   grid-auto-rows: 1fr ensures ALL rows (and therefore all cards) have the exact same height, based on the tallest card. */
+/* Base Grid (Desktop: 3 columns) */
 .course-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 16px;
     width: 100%;
-}
-
-@media (max-width: 900px) {
-    .course-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .course-grid {
-        grid-template-columns: 1fr;
-    }
+    max-width: 1082px; /* Exactly 3 cards (3*350) + 2 gaps (2*16) */
+    margin: 0 auto;
 }
 
 /* Clinical Card */
@@ -67,13 +56,18 @@ body {
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 6px;
-    padding: 20px 24px;
+    padding: 16px 20px;
     display: flex;
     align-items: center;
     gap: 16px;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
-    height: 100%;
+    
+    /* STRICT FIXED SIZE - NEVER SHRINKS OR GROWS */
+    width: 350px !important;
+    height: 100px !important;
+    flex: 0 0 350px !important;
+    max-width: none !important;
     box-sizing: border-box;
     
     /* NO SHADOWS - strict requirement */
@@ -115,7 +109,6 @@ body {
     font-weight: 600;
     color: var(--color-text-main);
     line-height: 1.3;
-    /* Text can wrap naturally, no truncation */
 }
 
 .card-subtitle {
@@ -124,7 +117,6 @@ body {
     font-weight: 400;
     color: var(--color-text-sub);
     line-height: 1.4;
-    /* Text can wrap naturally */
 }
 
 /* Arrow indicator on the right */
@@ -217,49 +209,36 @@ body {
     border-radius: 4px;
 }
 
-@media (max-width: 900px) {
+/* Slider for 2 Cards (when 3 cards don't fit securely) */
+@media (max-width: 1100px) {
     .nav-container {
-        padding: 16px;
+        padding: 16px 0; 
     }
     .course-grid {
         display: flex;
         flex-wrap: nowrap;
+        justify-content: flex-start !important; /* CRITICAL: Prevents left-side cutoff of slider items */
+        gap: 16px;
+        width: 716px; /* Exactly 2 cards (350px) + 1 gap (16px) */
+        max-width: 100vw;
+        margin: 0 auto; /* Center the entire slider block */
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         scrollbar-width: none; /* Firefox */
         -ms-overflow-style: none; /* IE/Edge */
-        padding-bottom: 4px; 
+        padding-bottom: 8px; 
     }
     .course-grid::-webkit-scrollbar {
         display: none; /* Chrome/Safari */
     }
     .course-card {
-        flex: 0 0 calc(50% - 8px);
-        scroll-snap-align: start;
+        scroll-snap-align: start; /* Snap precisely to the left edge of the visible container */
     }
 }
 
-@media (max-width: 600px) {
-    .nav-container {
-        padding: 12px;
-    }
-    .course-card {
-        flex: 0 0 calc(85%); /* Show 1 full card and peek the next */
-        padding: 16px;
-        gap: 12px;
-    }
-    .card-icon {
-        width: 40px;
-        height: 40px;
-    }
-    .card-icon svg {
-        width: 20px;
-        height: 20px;
-    }
-    .card-title {
-        font-size: 13px;
-    }
-    .card-subtitle {
-        font-size: 11px;
+/* Slider for 1 Card (when 2 cards don't fit) */
+@media (max-width: 750px) {
+    .course-grid {
+        width: 350px; /* Exactly 1 card */
     }
 }

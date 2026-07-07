@@ -130,7 +130,7 @@
             const indicatorsContainer = document.getElementById('sliderIndicators');
             
             function updateIndicators() {
-                // Check if scrolling is possible
+                // Check if scrolling is needed
                 if (grid.scrollWidth <= grid.clientWidth) {
                     indicatorsContainer.style.display = 'none';
                     return;
@@ -138,12 +138,21 @@
                 
                 indicatorsContainer.style.display = 'flex';
                 const cards = grid.querySelectorAll('.course-card');
+                
+                // Calculate exact distance to scroll based on how many cards are visible
                 const gap = parseInt(window.getComputedStyle(grid).gap) || 16;
-                const cardWidth = cards[0].offsetWidth + gap;
+                const cardWidth = cards[0].offsetWidth;
+                
+                // How many cards currently fit inside the visible slider container?
+                const visibleCards = Math.floor((grid.clientWidth + gap) / (cardWidth + gap)) || 1;
+                
+                // The slider should scroll by EXACTLY the number of fully visible cards
+                const scrollStep = visibleCards * (cardWidth + gap);
                 
                 // Max scroll distance
                 const maxScroll = grid.scrollWidth - grid.clientWidth;
-                const maxIndex = Math.ceil(maxScroll / cardWidth);
+                // Use Math.ceil so if there's any remainder, we get one final dot for the end
+                const maxIndex = Math.ceil(maxScroll / scrollStep);
                 
                 // Create dots if needed
                 if (indicatorsContainer.children.length !== (maxIndex + 1)) {
@@ -152,14 +161,17 @@
                         const dot = document.createElement('div');
                         dot.className = 'dot';
                         dot.addEventListener('click', () => {
-                            grid.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+                            let targetLeft = i * scrollStep;
+                            // Ensure the last dot goes exactly to the absolute end
+                            if (i === maxIndex) targetLeft = maxScroll;
+                            grid.scrollTo({ left: targetLeft, behavior: 'smooth' });
                         });
                         indicatorsContainer.appendChild(dot);
                     }
                 }
                 
                 // Update active dot
-                let activeIndex = Math.round(grid.scrollLeft / cardWidth);
+                let activeIndex = Math.round(grid.scrollLeft / scrollStep);
                 if (activeIndex > maxIndex) activeIndex = maxIndex;
                 
                 Array.from(indicatorsContainer.children).forEach((dot, index) => {
