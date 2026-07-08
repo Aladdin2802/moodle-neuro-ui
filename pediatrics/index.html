@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навигация курса</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="nav-container">
+        <nav class="course-grid" id="courseGrid">
+            <!-- 1. Библиотека -->
+            <a href="https://e.kazangmu.ru/mod/data/view.php?id=270527" target="_top" class="course-card">
+                <div class="card-icon blue">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Библиотека клинических рекомендаций</h3>
+                    <p class="card-subtitle">РФ и международные гайдлайны</p>
+                </div>
+                <div class="card-arrow">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+            </a>
+
+            <!-- 2. Лекторий -->
+            <a href="https://e.kazangmu.ru/course/view.php?id=3631#" target="_top" class="course-card">
+                <div class="card-icon purple">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Лекторий</h3>
+                    <p class="card-subtitle">Видеолекции, экспресс-видеообзоры, презентации и методические пособия</p>
+                </div>
+                <div class="card-arrow">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+            </a>
+
+</nav>
+        
+        <!-- Slider Indicators for Mobile -->
+        <div class="slider-indicators" id="sliderIndicators"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('courseGrid');
+            const indicatorsContainer = document.getElementById('sliderIndicators');
+            
+            function updateIndicators() {
+                // Check if scrolling is needed
+                if (grid.scrollWidth <= grid.clientWidth) {
+                    indicatorsContainer.style.display = 'none';
+                    return;
+                }
+                
+                indicatorsContainer.style.display = 'flex';
+                const cards = grid.querySelectorAll('.course-card');
+                
+                // Calculate exact distance to scroll based on how many cards are visible
+                const gap = parseInt(window.getComputedStyle(grid).gap) || 16;
+                const cardWidth = cards[0].offsetWidth;
+                
+                // How many cards currently fit inside the visible slider container?
+                const visibleCards = Math.floor((grid.clientWidth + gap) / (cardWidth + gap)) || 1;
+                
+                // The slider should scroll by EXACTLY the number of fully visible cards
+                const scrollStep = visibleCards * (cardWidth + gap);
+                
+                // Max scroll distance
+                const maxScroll = grid.scrollWidth - grid.clientWidth;
+                // Use Math.ceil so if there's any remainder, we get one final dot for the end
+                const maxIndex = Math.ceil(maxScroll / scrollStep);
+                
+                // Create dots if needed
+                if (indicatorsContainer.children.length !== (maxIndex + 1)) {
+                    indicatorsContainer.innerHTML = '';
+                    for (let i = 0; i <= maxIndex; i++) {
+                        const dot = document.createElement('div');
+                        dot.className = 'dot';
+                        dot.addEventListener('click', () => {
+                            let targetLeft = i * scrollStep;
+                            // Ensure the last dot goes exactly to the absolute end
+                            if (i === maxIndex) targetLeft = maxScroll;
+                            grid.scrollTo({ left: targetLeft, behavior: 'smooth' });
+                        });
+                        indicatorsContainer.appendChild(dot);
+                    }
+                }
+                
+                // Update active dot
+                let activeIndex = Math.round(grid.scrollLeft / scrollStep);
+                if (activeIndex > maxIndex) activeIndex = maxIndex;
+                
+                Array.from(indicatorsContainer.children).forEach((dot, index) => {
+                    dot.classList.toggle('active', index === activeIndex);
+                });
+            }
+
+            grid.addEventListener('scroll', updateIndicators, { passive: true });
+            window.addEventListener('resize', updateIndicators);
+            
+            // Initial call
+            setTimeout(updateIndicators, 100);
+        });
+    </script>
+</body>
+</html>
+
