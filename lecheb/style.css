@@ -1,0 +1,244 @@
+/* ==========================================================================
+   COHESIVE CLINICAL DESIGN SYSTEM (UWorld Style)
+   ==========================================================================
+   - Palette: #ffffff (Surface), #0f172a (Navy text), #64748b (Slate subtext), #e2e8f0 (Borders)
+   - Layout: Responsive Grid (Auto-wrapping to 2 rows if needed)
+   - Animations: Smooth, premium. Icon slight scale and color activation on hover.
+   - Text: NEVER truncates or cuts off.
+   - NO BOX-SHADOWS (kept strictly flat and clean).
+   ========================================================================== */
+
+:root {
+    --color-surface: #ffffff;
+    --color-bg-body: #ffffff; /* Forced white background to remove Moodle's gray iframe background */
+    --color-bg-hover: #eef2ff; /* Unified light lavender/blue tint */
+    --color-text-main: #0f172a;
+    --color-text-sub: #64748b;
+    --color-border: #94a3b8; /* Darker, more visible border */
+    
+    /* Token accents */
+    --accent-blue: #2563eb;
+    --accent-purple: #9333ea;
+    --accent-red: #e11d48;
+    --accent-orange: #ea580c;
+    --accent-green: #16a34a;
+    --accent-indigo: #4f46e5;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-bg-body);
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+/* Base Grid (Desktop: 3 columns) */
+.course-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 1082px; /* Exactly 3 cards (3*350) + 2 gaps (2*16) */
+    margin: 0 auto;
+}
+
+/* Clinical Card */
+.course-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    
+    /* STRICT FIXED SIZE - NEVER SHRINKS OR GROWS */
+    width: 350px !important;
+    height: 100px !important;
+    flex: 0 0 350px !important;
+    max-width: none !important;
+    box-sizing: border-box;
+    
+    /* NO SHADOWS - strict requirement */
+    box-shadow: none !important;
+}
+
+/* Hover Animation: Smooth background tint and border activation */
+.course-card:hover {
+    background-color: var(--color-bg-hover);
+    transform: translateY(-2px); /* Very slight lift, premium feel */
+}
+
+/* Icon Container */
+.card-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-sub);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Text Content - NO TRUNCATION */
+.card-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-main);
+    line-height: 1.3;
+}
+
+.card-subtitle {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-text-sub);
+    line-height: 1.4;
+}
+
+/* Arrow indicator on the right */
+.card-arrow {
+    flex-shrink: 0;
+    color: var(--color-border);
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* ==========================================================================
+   SPECIFIC HOVER STATES & ACCENT COLORS
+   ========================================================================== */
+
+/* Blue */
+.course-card:hover .card-icon.blue {
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: scale(1.05);
+}
+.course-card:hover:has(.blue) { border-color: var(--accent-blue); }
+
+/* Purple */
+.course-card:hover .card-icon.purple {
+    color: var(--accent-purple);
+    border-color: var(--accent-purple);
+    transform: scale(1.05);
+}
+.course-card:hover:has(.purple) { border-color: var(--accent-purple); }
+
+/* Red */
+.course-card:hover .card-icon.red {
+    color: var(--accent-red);
+    border-color: var(--accent-red);
+    transform: scale(1.05);
+}
+.course-card:hover:has(.red) { border-color: var(--accent-red); }
+
+/* Orange */
+.course-card:hover .card-icon.orange {
+    color: var(--accent-orange);
+    border-color: var(--accent-orange);
+    transform: scale(1.05);
+}
+.course-card:hover:has(.orange) { border-color: var(--accent-orange); }
+
+/* Green */
+.course-card:hover .card-icon.green {
+    color: var(--accent-green);
+    border-color: var(--accent-green);
+    transform: scale(1.05);
+}
+.course-card:hover:has(.green) { border-color: var(--accent-green); }
+
+/* Indigo */
+.course-card:hover .card-icon.indigo {
+    color: var(--accent-indigo);
+    border-color: var(--accent-indigo);
+    transform: scale(1.05);
+}
+.course-card:hover:has(.indigo) { border-color: var(--accent-indigo); }
+
+/* Arrow lights up and moves slightly */
+.course-card:hover .card-arrow {
+    color: var(--color-text-main);
+    transform: translateX(4px);
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS (SLIDER)
+   ========================================================================== */
+.slider-indicators {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--accent-blue);
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* Slider for 2 Cards (when 3 cards don't fit securely) */
+@media (max-width: 1100px) {
+    .nav-container {
+        padding: 16px 0; 
+    }
+    .course-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start !important; /* CRITICAL: Prevents left-side cutoff of slider items */
+        gap: 16px;
+        width: 716px; /* Exactly 2 cards (350px) + 1 gap (16px) */
+        max-width: 100vw;
+        margin: 0 auto; /* Center the entire slider block */
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        padding-bottom: 8px; 
+    }
+    .course-grid::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+    .course-card {
+        scroll-snap-align: start; /* Snap precisely to the left edge of the visible container */
+    }
+}
+
+/* Slider for 1 Card (when 2 cards don't fit) */
+@media (max-width: 750px) {
+    .course-grid {
+        width: 350px; /* Exactly 1 card */
+    }
+}
