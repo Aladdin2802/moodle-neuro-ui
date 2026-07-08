@@ -1,0 +1,328 @@
+/* === CSS ДЛЯ МЕТОДИЧЕСКИХ ПОСОБИЙ === */
+
+:root {
+    --color-surface: #ffffff;
+    --color-bg-hover: #eef2ff;
+    --color-text-main: #0f172a;
+    --color-text-sub: #64748b;
+    --color-border: #94a3b8;
+    --accent-blue: #2563eb;
+}
+
+/* === АККОРДЕОНЫ === */
+.neuro-container details {
+    margin-bottom: 16px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    box-shadow: none !important;
+}
+
+.neuro-container details > summary {
+    cursor: pointer;
+    padding: 16px 20px;
+    background: var(--color-surface); 
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--color-text-main);
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.neuro-container details > summary::-webkit-details-marker {
+    display: none;
+}
+
+.neuro-container details > summary:hover {
+    background: var(--color-bg-hover);
+}
+
+.neuro-container details[open] > summary {
+    border-bottom: 1px solid var(--color-border);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.neuro-container details > summary svg {
+    transition: transform 0.3s ease;
+    color: var(--color-text-sub);
+}
+
+.neuro-container details[open] > summary svg {
+    transform: rotate(180deg);
+    color: var(--accent-blue);
+}
+
+/* === ВНУТРЕННИЙ КОНТЕНТ АККОРДЕОНА (СПИСОК) === */
+.neuro-content {
+    padding: 0;
+}
+
+/* === СТРОКА ТАБЛИЦЫ === */
+.neuro-list-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e2e8f0;
+    transition: background 0.2s;
+}
+
+.neuro-list-row:last-child {
+    border-bottom: none;
+}
+
+/* Запрет подсветки строки, если мышку навели на кнопку */
+.neuro-list-row:hover:not(:has(.neuro-btn-small:hover)) {
+    background: var(--color-bg-hover);
+}
+
+.neuro-row-main {
+    flex-grow: 1;
+    padding-right: 20px;
+}
+
+.neuro-row-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-text-main);
+    margin-bottom: 4px;
+}
+
+.neuro-row-author {
+    font-size: 13px;
+    color: var(--color-text-sub);
+}
+
+.neuro-row-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.neuro-btn-small {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent-blue);
+    background: transparent;
+    border: 1px solid var(--accent-blue);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.neuro-btn-small:hover {
+    background: var(--color-bg-hover);
+    text-decoration: none;
+}
+
+.neuro-admin-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.hidden-raw-items {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    position: absolute !important;
+}
+
+/* === ФОРМЫ (ADD / SEARCH) === */
+.neuro-form-container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 32px;
+    box-shadow: none !important;
+}
+
+/* Убиваем любые серые заливки от Moodle внутри формы */
+.neuro-form-container fieldset,
+.neuro-form-container .fitem,
+.neuro-form-container .felement,
+.neuro-form-container .fcontainer {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.neuro-form-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 16px;
+    table-layout: fixed !important;
+    background: transparent !important;
+}
+
+.neuro-form-table td {
+    vertical-align: middle !important;
+    text-align: left !important;
+    background: transparent !important;
+}
+
+.neuro-form-label {
+    width: 200px !important;
+    min-width: 200px !important;
+    max-width: 200px !important;
+    font-weight: 600;
+    color: var(--color-text-main);
+    padding-right: 16px;
+    font-size: 14px;
+    text-align: left !important;
+}
+
+.neuro-form-input-cell {
+    text-align: left !important;
+}
+
+.neuro-form-table input[type="text"],
+.neuro-form-table select {
+    width: 100% !important;
+    max-width: 600px !important;
+    padding: 10px 14px !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    color: var(--color-text-main) !important;
+    display: block !important;
+}
+
+/* === SINGLE VIEW === */
+.neuro-single {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 32px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: none !important;
+}
+
+.neuro-single h2 {
+    margin: 0 0 12px 0;
+    font-size: 24px;
+    color: var(--color-text-main);
+    line-height: 1.3;
+}
+
+.neuro-single-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.neuro-btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-main);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.neuro-btn-back:hover {
+    background: var(--color-bg-hover);
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+    text-decoration: none;
+}
+
+/* Стилизация тега <a>, который генерирует Moodle для поля Файл */
+.neuro-single-file a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-blue);
+    background: var(--color-surface);
+    border: 1px solid var(--accent-blue);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.neuro-single-file a:hover {
+    background: var(--color-bg-hover);
+    text-decoration: none;
+}
+
+.neuro-single-file a::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'%3E%3C/path%3E%3Cpolyline points='15 3 21 3 21 9'%3E%3C/polyline%3E%3Cline x1='10' y1='14' x2='21' y2='3'%3E%3C/line%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* === ЖЕСТКИЙ ФИКС РЕДАКТОРА MOODLE И ВЫПАДАЮЩЕГО МЕНЮ ФОРМАТА === */
+.neuro-form-input-cell .fitem,
+.neuro-form-input-cell .felement,
+.neuro-form-input-cell .feditor,
+.neuro-form-input-cell .editor_atto_wrap,
+.neuro-form-input-cell .tox-tinymce,
+.neuro-form-input-cell .row,
+.neuro-form-input-cell [class*="col-"],
+.neuro-form-input-cell > div,
+.neuro-form-input-cell > div > div {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+}
+
+.neuro-form-input-cell .editor_atto_wrap,
+.neuro-form-input-cell .tox-tinymce,
+.neuro-form-input-cell .feditor {
+    max-width: 600px !important;
+    width: 100% !important;
+}
+
+/* Скрываем дурацкий выпадающий список "Формат HTML" под редактором (с запасом прочности для разных тем) */
+.neuro-form-input-cell [class*="format"],
+.neuro-form-input-cell select[name*="format"],
+.neuro-form-input-cell select[id*="format"],
+.neuro-form-input-cell label[for*="format"],
+.neuro-form-input-cell .fitem_fselect,
+.neuro-form-input-cell div:has(select[name*="format"]) {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    pointer-events: none !important;
+}

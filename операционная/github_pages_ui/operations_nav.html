@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Навигация Операционная</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 10px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #ffffff;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .course-card {
+            flex: 1 1 calc(50% - 16px);
+            min-width: 320px;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border: 1px solid #94a3b8;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #0f172a;
+            padding: 24px;
+            transition: all 0.2s ease-in-out;
+            box-sizing: border-box;
+            box-shadow: none !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card:hover {
+            background-color: #eef2ff;
+            border-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: none !important;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+        
+        .course-card:hover .card-icon {
+            transform: scale(1.05);
+        }
+
+        .icon-blue { background-color: rgba(37, 99, 235, 0.1); color: #2563eb; }
+        .icon-orange { background-color: rgba(234, 88, 12, 0.1); color: #ea580c; }
+
+        .card-title {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #0f172a;
+        }
+
+        .card-list {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .card-list li {
+            margin-bottom: 4px;
+        }
+
+        .card-action {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #2563eb;
+        }
+
+        .card-action svg {
+            transition: transform 0.2s ease;
+        }
+
+        .course-card:hover .card-action svg {
+            transform: translateX(4px);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        
+        <!-- 1. Интерактивные кейсы -->
+        <!-- Замените href на ссылку на Базу Данных Интерактивных кейсов -->
+        <a href="view.php?d=XXX" target="_top" class="course-card">
+            <div class="card-header">
+                <div class="card-icon icon-orange">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </div>
+                <h3 class="card-title">Интерактивные кейсы</h3>
+            </div>
+            <ul class="card-list">
+                <li>Симуляции с принятием решений</li>
+                <li>Тесты на знание анатомии и этапов операции</li>
+            </ul>
+            <div class="card-action">
+                Перейти к кейсам
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+        </a>
+
+        <!-- 2. Видеобанк -->
+        <!-- Замените href на ссылку на Базу Данных Видеобанка -->
+        <a href="view.php?d=YYY" target="_top" class="course-card">
+            <div class="card-header">
+                <div class="card-icon icon-blue">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                    </svg>
+                </div>
+                <h3 class="card-title">Видеобанк</h3>
+            </div>
+            <ul class="card-list">
+                <li>Полный архив операций</li>
+                <li>Рассортировано по нозологиям</li>
+            </ul>
+            <div class="card-action">
+                Открыть архив
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+        </a>
+
+    </div>
+</body>
+</html>

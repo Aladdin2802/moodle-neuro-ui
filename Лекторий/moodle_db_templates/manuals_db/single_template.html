@@ -1,0 +1,72 @@
+<!-- === ШАБЛОН ОДНОЙ ЗАПИСИ (SINGLE TEMPLATE) === -->
+<div class="neuro-single">
+    <!-- Скрытые данные для JS -->
+    <div id="rawSingleData" style="display: none;">
+        <div class="raw-file">[[Файл]] [[файл]]</div>
+        <div class="raw-url">[[Ссылка]] [[ссылка]]</div>
+    </div>
+    
+    <div style="font-size: 13px; font-weight: 600; color: var(--accent-blue); text-transform: uppercase; margin-bottom: 8px;">Пособие: [[Раздел]]</div>
+    <h2>[[Название]]</h2>
+    
+    <!-- Контейнер для кнопки -->
+    <div style="margin-top: 24px; margin-bottom: 32px;" class="neuro-single-file" id="singleButtonContainer">
+        <!-- JS вставит сюда кнопку -->
+    </div>
+
+    <!-- Подвал карточки: элементы управления -->
+    <div class="neuro-single-footer">
+        <!-- Ссылка на базу данных -->
+        <a href="https://e.kazangmu.ru/mod/data/view.php?d=613" class="neuro-btn-back">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Назад к списку
+        </a>
+        
+        <div class="neuro-admin-controls">
+            ##edit##
+            ##delete##
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const rawData = document.getElementById('rawSingleData');
+    const btnContainer = document.getElementById('singleButtonContainer');
+    
+    if (rawData && btnContainer) {
+        let fileNode = rawData.querySelector('.raw-file a');
+        let fileUrl = fileNode ? fileNode.href : '';
+        
+        let urlNode = rawData.querySelector('.raw-url a');
+        let externalUrlText = rawData.querySelector('.raw-url').innerText.trim();
+        externalUrlText = externalUrlText.replace(/\[\[.*?\]\]/g, '').trim();
+        
+        let externalUrl = urlNode ? urlNode.href : externalUrlText;
+        
+        let targetUrl = '';
+        if (fileUrl && fileUrl !== '') {
+            targetUrl = fileUrl;
+        } else if (externalUrl && externalUrl !== '') {
+            targetUrl = externalUrl;
+        }
+        
+        if (!targetUrl) {
+            let outsideLink = document.querySelector('a[href*="drive.google.com"], a[href*="disk.yandex"], a[href*="pluginfile"]');
+            if (outsideLink) targetUrl = outsideLink.href;
+            else {
+                let match = document.body.innerText.match(/https:\/\/(drive\.google\.com|disk\.yandex\.[a-z]+)\/[^\s]+/);
+                if (match) targetUrl = match[0];
+            }
+        }
+        
+        if (targetUrl) {
+            btnContainer.innerHTML = '<a href="' + targetUrl + '" target="_blank">Открыть пособие</a>';
+        } else {
+            btnContainer.innerHTML = '<div style="color: var(--color-text-sub); font-style: italic;">Файл не прикреплен</div>';
+        }
+    }
+});
+</script>

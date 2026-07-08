@@ -1,0 +1,30 @@
+<!-- === ШАБЛОН ОДНОЙ ЗАПИСИ (SINGLE TEMPLATE) === -->
+<div class="neuro-single">
+    <div class="neuro-single-topic">Раздел: [[Раздел]]</div>
+    <h2>[[Название]]</h2>
+    <div style="font-size: 14px; color: var(--color-text-sub); margin-bottom: 16px;">Автор кейса: [[Автор]]</div>
+    
+    <div class="neuro-single-desc">
+        [[Описание]]
+    </div>
+
+    <!-- Скрытое поле со ссылкой на кейс для парсинга JS -->
+    <div id="single-case-link" style="display: none;">[[Ссылка на кейс]]</div>
+    
+    <!-- Сюда JS внедрит кнопку начала кейса -->
+    <div id="rendered-case-button"></div>
+
+    <!-- Подвал карточки -->
+    <div class="neuro-single-footer">
+        <a href="https://e.kazangmu.ru/mod/data/view.php?d=615" class="neuro-btn-back">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Назад к списку
+        </a>
+        <div class="neuro-admin-controls">
+            ##edit## ##delete##
+        </div>
+    </div>
+</div>

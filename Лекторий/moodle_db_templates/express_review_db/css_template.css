@@ -1,0 +1,427 @@
+/* === CSS ДЛЯ ЭКСПРЕСС-ОБЗОРОВ === */
+
+:root {
+    --color-surface: #ffffff;
+    --color-bg-hover: #eef2ff;
+    --color-text-main: #0f172a;
+    --color-text-sub: #64748b;
+    --color-border: #94a3b8;
+    --accent-orange: #2563eb;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--color-text-main);
+}
+
+
+
+.hidden-raw-items, .raw-express-item {
+    display: none !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    position: absolute !important;
+}
+
+/* Аккордеоны (Разделы) */
+.neuro-container details {
+    margin-bottom: 16px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    box-shadow: none !important;
+}
+
+.neuro-container details > summary {
+    cursor: pointer;
+    padding: 16px 20px;
+    background: var(--color-surface);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--color-text-main);
+    transition: background 0.2s;
+}
+
+.neuro-container details > summary::-webkit-details-marker {
+    display: none;
+}
+
+.neuro-container details > summary:hover {
+    background: var(--color-bg-hover);
+}
+
+.neuro-container details[open] > summary {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.neuro-container details > summary svg {
+    transition: transform 0.3s ease;
+    color: var(--color-text-sub);
+}
+
+.neuro-container details[open] > summary svg {
+    transform: rotate(180deg);
+    color: var(--accent-orange);
+}
+
+.neuro-accordion-content {
+    padding: 24px;
+    background: var(--color-surface);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+/* СЕТКА КОМПАКТНЫХ КАРТОЧЕК */
+.express-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.express-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 16px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s;
+}
+
+.express-card:hover {
+    border-color: var(--accent-orange);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08) !important;
+    transform: translateY(-2px);
+}
+
+.express-topic-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #eef2ff;
+    color: var(--accent-orange);
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    align-self: flex-start;
+}
+
+.express-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+}
+
+.express-desc {
+    font-size: 13px;
+    color: var(--color-text-sub);
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+    flex-grow: 1;
+    /* Ограничение в 3 строки для компактной карточки */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.express-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.express-author {
+    font-size: 12px;
+    color: var(--color-text-sub);
+}
+
+.express-btn {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent-orange);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    padding: 6px 14px;
+    border: 1px solid var(--accent-orange);
+    border-radius: 4px;
+    background: transparent;
+    transition: all 0.2s;
+}
+.express-btn:hover {
+    background: var(--color-bg-hover);
+    text-decoration: none;
+}
+
+.express-admin-controls {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+.express-admin-controls a {
+    display: inline-block;
+}
+
+/* Single и Формы - используем те же классы, что и в видео/доках */
+.neuro-single {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 32px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: none !important;
+}
+
+.neuro-single-topic {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-sub);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.express-single-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-text-main);
+    margin-bottom: 24px;
+}
+
+.neuro-single h2 {
+    margin: 0 0 12px 0;
+    font-size: 24px;
+    color: var(--color-text-main);
+}
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    margin-top: 24px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+.iframe-container iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%; border: 0;
+}
+
+.neuro-single-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+}
+
+.neuro-btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-main);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.neuro-btn-back:hover {
+    background: var(--color-bg-hover);
+    color: var(--accent-orange);
+    border-color: var(--accent-orange);
+}
+
+/* Стили для аккордеонов в одиночной записи */
+.neuro-video-accordion summary {
+    cursor: pointer;
+    padding: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.neuro-video-accordion summary:hover {
+    background: var(--color-bg-hover);
+    color: var(--accent-orange);
+}
+
+.neuro-video-accordion summary svg {
+    transition: transform 0.3s ease;
+    color: var(--color-text-sub);
+}
+
+.neuro-video-accordion[open] summary svg {
+    transform: rotate(180deg);
+    color: var(--accent-orange);
+}
+
+.yt-summary span { color: var(--accent-red, #e11d48) !important; font-weight: 700; }
+.yt-summary svg { color: var(--accent-red, #e11d48) !important; }
+
+.rt-summary span { color: var(--accent-blue, #2563eb) !important; font-weight: 700; }
+.rt-summary svg { color: var(--accent-blue, #2563eb) !important; }
+
+/* ФОРМЫ */
+.neuro-form-container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 32px;
+    box-shadow: none !important;
+}
+
+.neuro-form-container fieldset,
+.neuro-form-container .fitem,
+.neuro-form-container .felement,
+.neuro-form-container .fcontainer {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.neuro-form-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 16px;
+    table-layout: fixed !important;
+    background: transparent !important;
+}
+
+.neuro-form-table td {
+    vertical-align: middle !important;
+    text-align: left !important;
+    background: transparent !important;
+}
+
+.neuro-form-label {
+    width: 200px !important;
+    min-width: 200px !important;
+    max-width: 200px !important;
+    font-weight: 600;
+    color: var(--color-text-main);
+    padding-right: 16px;
+    font-size: 14px;
+    text-align: left !important;
+}
+
+.neuro-form-input-cell {
+    text-align: left !important;
+}
+
+.neuro-form-table input[type="text"],
+.neuro-form-table select {
+    width: 100% !important;
+    max-width: 600px !important;
+    padding: 10px 14px !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    color: var(--color-text-main) !important;
+    display: block !important;
+    transition: all 0.2s ease !important;
+}
+
+.neuro-form-table input:focus,
+.neuro-form-table select:focus,
+.neuro-form-table textarea:focus {
+    border-color: var(--accent-orange) !important;
+    box-shadow: none !important;
+}
+
+.neuro-form-table textarea.form-control {
+    width: 100% !important;
+    max-width: 600px !important;
+    padding: 10px 14px !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    color: var(--color-text-main) !important;
+    transition: all 0.2s ease !important;
+}
+
+.neuro-form-table select {
+    cursor: pointer;
+    appearance: auto;
+}
+
+/* === ЖЕСТКИЙ ФИКС РЕДАКТОРА MOODLE И ВЫПАДАЮЩЕГО МЕНЮ ФОРМАТА === */
+.neuro-form-input-cell .fitem,
+.neuro-form-input-cell .felement,
+.neuro-form-input-cell .feditor,
+.neuro-form-input-cell .editor_atto_wrap,
+.neuro-form-input-cell .tox-tinymce,
+.neuro-form-input-cell .row,
+.neuro-form-input-cell [class*="col-"],
+.neuro-form-input-cell > div,
+.neuro-form-input-cell > div > div {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+}
+
+.neuro-form-input-cell .editor_atto_wrap,
+.neuro-form-input-cell .tox-tinymce,
+.neuro-form-input-cell .feditor {
+    max-width: 600px !important;
+    width: 100% !important;
+}
+
+/* Скрываем дурацкий выпадающий список "Формат HTML" под редактором (с запасом прочности для разных тем) */
+.neuro-form-input-cell [class*="format"],
+.neuro-form-input-cell select[name*="format"],
+.neuro-form-input-cell select[id*="format"],
+.neuro-form-input-cell label[for*="format"],
+.neuro-form-input-cell .fitem_fselect,
+.neuro-form-input-cell div:has(select[name*="format"]) {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    pointer-events: none !important;
+}

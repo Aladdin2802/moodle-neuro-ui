@@ -1,0 +1,400 @@
+/* === CSS ДЛЯ БАЗЫ ДАННЫХ ВИДЕОБАНК (Flat Design) === */
+
+:root {
+    --color-surface: #ffffff;
+    --color-bg-hover: #eef2ff;
+    --color-text-main: #0f172a;
+    --color-text-sub: #64748b;
+    --color-border: #94a3b8;
+    --accent-blue: #2563eb;
+    --accent-red: #e11d48;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--color-text-main);
+}
+
+/* Скрытие технических сырых данных */
+.hidden-raw-items, .raw-video-item {
+    display: none !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    position: absolute !important;
+}
+
+/* === АККОРДЕОНЫ (Разделы) === */
+.neuro-topic-accordion {
+    margin-bottom: 24px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: none !important;
+}
+
+.neuro-topic-accordion > summary {
+    cursor: pointer;
+    padding: 16px 20px;
+    background: var(--color-surface); 
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+}
+
+.neuro-topic-accordion > summary:hover {
+    background: var(--color-bg-hover);
+}
+
+.neuro-topic-accordion[open] > summary {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.neuro-accordion-content {
+    padding: 24px;
+    background: var(--color-surface);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* === СЕТКА КАРТОЧЕК (До 3 шт в ряд) === */
+.neuro-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.neuro-grid-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    box-shadow: none !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.neuro-grid-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+}
+
+.neuro-card-content {
+    padding: 20px;
+    border-bottom: 1px solid var(--color-border);
+    flex-grow: 1;
+}
+
+.neuro-card-title {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-main);
+    line-height: 1.4;
+}
+
+.neuro-card-desc {
+    margin: 0 0 16px 0;
+    font-size: 14px;
+    color: var(--color-text-main);
+    line-height: 1.5;
+}
+
+.neuro-card-author {
+    font-size: 13px;
+    color: var(--color-text-main);
+    font-weight: 600;
+    padding-top: 12px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.neuro-card-actions {
+    background: var(--color-surface);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.neuro-card-actions .neuro-btn-small {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--color-surface);
+    color: var(--accent-blue);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.neuro-card-actions .neuro-btn-small:hover {
+    background: var(--color-bg-hover);
+    color: var(--accent-blue);
+}
+
+.neuro-admin-controls {
+    display: flex;
+    gap: 8px;
+    padding: 8px 20px;
+    font-size: 12px;
+    justify-content: flex-end;
+}
+
+/* === SINGLE TEMPLATE (ОДНА ЗАПИСЬ) === */
+.neuro-single {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 32px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: none !important;
+}
+
+.neuro-single-topic {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text-sub);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.neuro-single h2 {
+    margin: 0 0 16px 0;
+    font-size: 24px;
+    color: var(--color-text-main);
+    line-height: 1.3;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.neuro-single-author {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.neuro-single-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-text-main);
+    margin-bottom: 32px;
+    padding: 0; 
+}
+
+/* Свернутые видео-блоки (Details) */
+.neuro-video-accordion {
+    margin-bottom: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-surface);
+    overflow: hidden; 
+}
+
+.neuro-video-accordion > summary {
+    cursor: pointer;
+    padding: 16px 20px;
+    background: var(--color-surface);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-text-main);
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+.neuro-video-accordion > summary:hover {
+    background: var(--color-bg-hover);
+}
+
+.yt-summary span { color: var(--accent-red); }
+.rt-summary span { color: var(--accent-blue); }
+
+.neuro-video-content {
+    border-top: 1px solid var(--color-border);
+    padding: 0;
+    background: #000;
+}
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.neuro-single-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+}
+
+.neuro-btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-main);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.neuro-btn-back:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+/* === ФОРМЫ (ADD / SEARCH) === */
+.neuro-form-container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: none !important;
+}
+
+.neuro-form-container fieldset,
+.neuro-form-container .fitem,
+.neuro-form-container .felement,
+.neuro-form-container .fcontainer {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.neuro-form-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 16px;
+    table-layout: fixed !important;
+    background: transparent !important;
+}
+
+.neuro-form-table td {
+    vertical-align: middle !important;
+    text-align: left !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.neuro-form-label {
+    width: 200px !important;
+    min-width: 200px !important;
+    max-width: 200px !important;
+    font-weight: 600;
+    color: var(--color-text-main);
+    padding-right: 16px !important;
+    font-size: 14px;
+    text-align: left !important;
+}
+
+.neuro-form-input-cell {
+    text-align: left !important;
+}
+
+.neuro-form-table input[type="text"],
+.neuro-form-table select {
+    width: 100% !important;
+    max-width: 600px !important;
+    padding: 10px 14px !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    color: var(--color-text-main) !important;
+    display: block !important;
+}
+
+.neuro-form-table select {
+    cursor: pointer;
+    appearance: auto;
+}
+
+/* ФИКС РЕДАКТОРА MOODLE */
+.neuro-form-input-cell .fitem,
+.neuro-form-input-cell .felement,
+.neuro-form-input-cell .feditor,
+.neuro-form-input-cell .editor_atto_wrap,
+.neuro-form-input-cell .tox-tinymce,
+.neuro-form-input-cell .row,
+.neuro-form-input-cell [class*="col-"],
+.neuro-form-input-cell > div,
+.neuro-form-input-cell > div > div {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+}
+
+.neuro-form-input-cell .editor_atto_wrap,
+.neuro-form-input-cell .tox-tinymce,
+.neuro-form-input-cell .feditor {
+    max-width: 600px !important;
+    width: 100% !important;
+}
+
+.neuro-form-input-cell [class*="format"],
+.neuro-form-input-cell select[name*="format"],
+.neuro-form-input-cell select[id*="format"],
+.neuro-form-input-cell label[for*="format"],
+.neuro-form-input-cell .fitem_fselect,
+.neuro-form-input-cell div:has(select[name*="format"]) {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    pointer-events: none !important;
+}

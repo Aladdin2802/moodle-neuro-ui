@@ -1,0 +1,24 @@
+<!-- === ШАБЛОН ОДНОЙ ЗАПИСИ (SINGLE TEMPLATE) === -->
+<div class="neuro-single-wrapper">
+    <div class="neuro-single-content">
+        <div class="neuro-single-badges" style="margin-bottom: 15px;">
+            <span class="neuro-badge">[[Регион]]</span>
+            <span class="neuro-badge" style="margin-left: 10px; background: #e2e8f0; color: #475569;">[[Раздел]]</span>
+        </div>
+        
+        <h2 class="neuro-single-title">[[Название документа]]</h2>
+        
+        <div class="neuro-single-document" style="margin-top: 25px; margin-bottom: 30px;">
+            <!-- Moodle выведет ссылку сюда, а JS превратит её в кнопку -->
+            <div class="neuro-file-wrapper" style="display:none;">[[Ссылка]]</div>
+            <div class="neuro-file-btn-container"></div>
+        </div>
+
+        <div class="neuro-single-footer" style="display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+            <a href="https://e.kazangmu.ru/mod/data/view.php?d=618" class="neuro-btn-secondary">← Вернуться к списку</a>
+            <div class="neuro-admin-controls" style="display: flex; gap: 8px;">
+                ##edit## ##delete##
+            </div>
+        </div>
+    </div>
+</div>
