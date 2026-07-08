@@ -1,0 +1,112 @@
+<!-- === ШАБЛОН РАСШИРЕННОГО ПОИСКА (ADVANCED SEARCH) === -->
+<style>
+/* Встраиваем стили прямо сюда, потому что Moodle не всегда подгружает CSS базы на странице поиска */
+.neuro-form-container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    border: 1px solid #94a3b8;
+    border-radius: 6px;
+    padding: 32px;
+    box-shadow: none !important;
+}
+
+.neuro-form-header {
+    margin-bottom: 24px;
+}
+
+.neuro-form-header h2 {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    color: #0f172a;
+}
+
+.neuro-form-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Убиваем любые серые заливки от Moodle внутри формы */
+.neuro-form-container fieldset,
+.neuro-form-container .fitem,
+.neuro-form-container .felement,
+.neuro-form-container .fcontainer {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.neuro-form-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 16px;
+    table-layout: fixed !important;
+    background: transparent !important;
+}
+
+.neuro-form-table td {
+    vertical-align: middle !important;
+    text-align: left !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.neuro-form-label {
+    width: 200px !important;
+    min-width: 200px !important;
+    max-width: 200px !important;
+    font-weight: 600;
+    color: #0f172a;
+    padding-right: 16px !important;
+    font-size: 14px;
+    text-align: left !important;
+}
+
+.neuro-form-input-cell {
+    text-align: left !important;
+}
+
+.neuro-form-table input[type="text"],
+.neuro-form-table select {
+    width: 100% !important;
+    max-width: 600px !important;
+    padding: 10px 14px !important;
+    border: 1px solid #94a3b8 !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    display: block !important;
+}
+
+/* Перебиваем заливку внешних контейнеров Moodle */
+.defaulttemplate, .box.generalbox {
+    background: transparent !important;
+    border: none !important;
+}
+</style>
+
+<div class="neuro-form-container">
+    <div class="neuro-form-header">
+        <h2>Поиск методических пособий</h2>
+        <p>Используйте фильтры ниже для быстрого поиска нужного материала.</p>
+    </div>
+
+    <table class="neuro-form-table">
+        <tr>
+            <td class="neuro-form-label">Раздел:</td>
+            <td class="neuro-form-input-cell">[[Раздел]]</td>
+        </tr>
+        <tr>
+            <td class="neuro-form-label">Название:</td>
+            <td class="neuro-form-input-cell">[[Название]]</td>
+        </tr>
+    </table>
+</div>

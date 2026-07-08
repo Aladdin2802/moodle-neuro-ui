@@ -1,0 +1,57 @@
+<!-- === ШАБЛОН ОДНОЙ ЗАПИСИ (SINGLE TEMPLATE) === -->
+<div class="neuro-single">
+    <div class="neuro-single-topic">Раздел: [[Раздел]]</div>
+    <h2>[[Название]]</h2>
+    <div class="neuro-single-author">Хирург: [[Хирург]]</div>
+    
+    <div class="neuro-single-desc">
+        [[Описание]]
+    </div>
+
+    <!-- YouTube Аккордеон (свернут по умолчанию) -->
+    <div id="raw-yt-url" style="display: none;">[[YouTube]]</div>
+    <div id="raw-rt-url" style="display: none;">[[RuTube]]</div>
+
+    <details class="neuro-video-accordion" id="details-yt">
+        <summary class="yt-summary">
+            <span>Смотреть на YouTube</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </summary>
+        <div class="neuro-video-content">
+            <div class="iframe-container">
+                <iframe id="yt-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </details>
+
+    <!-- RuTube Аккордеон (свернут по умолчанию) -->
+    <details class="neuro-video-accordion" id="details-rt">
+        <summary class="rt-summary">
+            <span>Смотреть на RuTube</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </summary>
+        <div class="neuro-video-content">
+            <div class="iframe-container">
+                <iframe id="rt-iframe" src="" frameborder="0" allow="clipboard-write; autoplay" allowfullscreen></iframe>
+            </div>
+        </div>
+    </details>
+
+    <!-- Подвал карточки -->
+    <div class="neuro-single-footer">
+        <a href="https://e.kazangmu.ru/mod/data/view.php?id=270520" class="neuro-btn-back">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Назад к списку
+        </a>
+        <div class="neuro-admin-controls">
+            ##edit## ##delete##
+        </div>
+    </div>
+</div>
